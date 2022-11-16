@@ -22,11 +22,23 @@ impl Display for City {
     }
 }
 
+
 #[derive(Debug)]
 struct Color {
     red: u8,
     green: u8,
     blue: u8,
+}
+
+///Cloned Display for City and Changed to Display for color
+/// (Line 39) Formatted to print as seen in output 
+/// (Line 40) Changed the variables that use to be lat and lon to red green and blue
+impl Display for Color {
+    // `f` is a buffer, this method must write the formatted string into it
+    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
+        write!(f, "red: {:},green: {:},blue: {:}",
+            self.red, self.green, self.blue)
+    }
 }
 
 fn main() {
@@ -44,6 +56,6 @@ fn main() {
         Color { red: 0, green: 0, blue: 0 },
     ].iter() {
         // Hint : Fix the code so you can print it using {}
-        println!("{:?}", *color);
+        println!("{}", *color);
     }
 }
